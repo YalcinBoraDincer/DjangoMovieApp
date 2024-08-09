@@ -37,3 +37,22 @@
 .navbar-nav .nav-link i {
     font-size: 1.5rem; /* Bu değeri ihtiyacınıza göre ayarlayın */
 }
+.rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+.rating input[type="radio"] {
+  display: none;
+}
+.rating label {
+  font-size: 2rem;
+  color: #ddd;
+  cursor: pointer;
+}
+.rating input[type="radio"]:checked ~ label {
+  color: #ffd700;
+}
+.rating label:hover,
+.rating label:hover ~ label {
+  color: #ffd700;
+}

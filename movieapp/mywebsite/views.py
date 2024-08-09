@@ -1,6 +1,11 @@
 from django.shortcuts import render,redirect
 from . import models
-from django.urls import reverse
+from django.urls import reverse,reverse_lazy
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView
+
 
 # Create your views here.
 def commentpage(request):
@@ -8,6 +13,7 @@ def commentpage(request):
     comment_dictionary = {"comments": all_comments}  # Sözlük olarak tanımlanmalı
     return render(request, 'mywebsite/commentpage.html', context=comment_dictionary)
 
+@login_required(login_url = "/login")
 def addcomment(request):
     if request.method == "POST":
         nickname = request.POST["nickname"]
@@ -36,3 +42,8 @@ def intheaters(request):
     return render(request,'mywebsite/intheaters.html')
 
 
+
+class signUpView(CreateView):
+    form_class = UserCreationForm
+    success_url = reverse_lazy("login")
+    template_name = "registration/signup.html"

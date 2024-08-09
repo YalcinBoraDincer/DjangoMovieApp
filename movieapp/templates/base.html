@@ -8,27 +8,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="basestyle.css">
     <style>
-        /* Radiobuttonları gizleme ve yıldızları gösterme */
-        .rating {
-            direction: rtl;
-            unicode-bidi: bidi-override;
-        }
-        .rating input[type="radio"] {
-            display: none;
-        }
-        .rating label {
-            font-size: 2rem;
-            color: #ddd;
-            cursor: pointer;
-        }
-        .rating input[type="radio"]:checked ~ label {
-            color: #ffd700;
-        }
-        .rating label:hover,
-        .rating label:hover ~ label {
-            color: #ffd700;
-        }
-    </style>
+      
+      
+      .rating {
+          direction: rtl;
+          unicode-bidi: bidi-override;
+      }
+      .rating input[type="radio"] {
+          display: none;
+      }
+      .rating label {
+          font-size: 2rem;
+          color: #ddd;
+          cursor: pointer;
+      }
+      .rating input[type="radio"]:checked ~ label {
+          color: #ffd700;
+      }
+      .rating label:hover,
+      .rating label:hover ~ label {
+          color: #ffd700;
+      }
+  </style>
     <title>Movie App</title>
 </head>
 <body>
@@ -58,6 +59,22 @@
               <li class="nav-item">
                 <a class="nav-link px-3" href="{% url 'mywebsite:intheaters' %}">In Theaters</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link px-3" href="{% url 'login' %}">Login</a>
+              </li>
+              <li class="nav-item">
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{% url 'mywebsite:imdbtops' %}">
+                    <button type="submit" class="nav-link px-3" style="background: none; border: none; padding: 3; cursor: pointer;">Logout</button>
+                </form>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link px-3" href="{% url 'mywebsite:signup' %}">SignUp</a>
+            </li>
+            
+            
+            
             </ul>
       
             <ul class="navbar-nav flex-row">
