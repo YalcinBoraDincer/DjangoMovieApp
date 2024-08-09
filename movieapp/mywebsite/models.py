@@ -11,10 +11,10 @@ class Movie(models.Model):
         return self.title
 
 class Comment(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name='comments')
+    nickname =models.TextField()      #models.ForeignKey(User, on_delete=models.CASCADE)
     comment_text = models.TextField()
     rating = models.IntegerField()
 
     def __str__(self):
-        return f'{self.user.username} - {self.movie.title}'
+        return f'{self.user.username}'

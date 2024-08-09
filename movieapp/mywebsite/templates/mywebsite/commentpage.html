@@ -3,9 +3,15 @@
 {%block content%}
 <br><br><br><br>
 <ul>
-    {% for comment in comments%}
-    <li>{{comment}}</li>
-    {%endfor%}
+    {% for comment in comments %}
+    <div>
+        <p>Nickname: {{ comment.nickname }}</p>
+        <p>{{ comment.comment_text }}</p>
+        <p>Rating: {{ comment.rating }}</p>
+        
+    </div>
+{% endfor %}
+
 
 </ul>
 
