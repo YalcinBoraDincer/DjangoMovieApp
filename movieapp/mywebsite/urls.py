@@ -4,7 +4,7 @@ from.import views
 app_name = 'mywebsite'
 
 urlpatterns = [
-    path('',views.imdbtops,name='imdbtops'),#bora.com/mywebsite/commentpage
+    path('',views.imdb_top_100,name='imdbtop'),#bora.com/mywebsite/commentpage
     path('whattowatch/',views.whattowatch,name='whattowatch'),#bora.com/mywebsite/movies
     path('comentpage/',views.commentpage,name='commentpage'),#bora.com/mywebsite/commentpage
     path('intheaters/',views.intheaters,name='intheaters'),#bora.com/mywebsite/intheaters

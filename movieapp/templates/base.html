@@ -45,27 +45,29 @@
           <div class="collapse navbar-collapse" id="navbarExample01">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item active">
-                <a class="nav-link px-3" href="{% url 'mywebsite:imdbtops' %}">IMDB Top 20</a>
+                <a class="nav-link px-3" href="{% url 'mywebsite:imdbtop' %}">IMDB Top 100</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-3" href="{% url 'mywebsite:intheaters' %}">Upcoming</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link px-3" href="{% url 'mywebsite:commentpage' %}">Comment Page</a>
               </li>
+              <!--
               <li class="nav-item">
                 <a class="nav-link px-3" href="{% url 'mywebsite:addcomment' %}">Add Comment</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link px-3" href="{% url 'mywebsite:whattowatch' %}">What to Watch?</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link px-3" href="{% url 'mywebsite:intheaters' %}">In Theaters</a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link px-3" href="{% url 'login' %}">Login</a>
               </li>
               <li class="nav-item">
                 <form method="POST" action="{% url 'logout' %}">
                     {% csrf_token %}
-                    <input type="hidden" name="next" value="{% url 'mywebsite:imdbtops' %}">
+                    <input type="hidden" name="next" value="{% url 'mywebsite:imdbtop' %}">
                     <button type="submit" class="nav-link px-3" style="background: none; border: none; padding: 3; cursor: pointer;">Logout</button>
                 </form>
             </li>
@@ -79,17 +81,17 @@
       
             <ul class="navbar-nav flex-row">
               <li class="nav-item">
-                <a class="nav-link pe-3" href="#!">
+                <a class="nav-link pe-3" href="https://www.youtube.com/@yalcinboradincer7313">
                   <i class="fab fa-youtube"></i>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link px-3" href="#!">
-                  <i class="fab fa-facebook-f"></i>
+                <a class="nav-link px-3" href="https://github.com/YalcinBoraDincer">
+                  <i class="fab fa-github"></i>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link ps-3" href="#!">
+                <a class="nav-link ps-3" href="https://www.instagram.com/dinceryalcinbora?igsh=M2U0bGgyb2FvMXM5">
                   <i class="fab fa-instagram"></i>
                 </a>
               </li>

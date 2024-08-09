@@ -1,21 +1,57 @@
-{%extends "base.html"%}
+{% extends "base.html" %}
 
-{%block content%}
-<br><br><br><br>
-<ul>
-    {% for comment in comments %}
-    <div>
-        <p>Nickname: {{ comment.nickname }}</p>
-        <p>{{ comment.comment_text }}</p>
-        <p>Rating: {{ comment.rating }}</p>
-        
-    </div>
-{% endfor %}
+{% block content %}
 
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Mulish', sans-serif;
+        transition: 0.3s all ease-in-out;
+    }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #F0F2FB; /* Sayfa arka plan rengi */
+        margin-top: 60px; /* Navbar yüksekliğine göre margin ayarla */
+    }
+    .comments-container {
+        border-radius: 5px;
+        padding: 20px;
+        background-color: #FFF; /* Yorum kutularının arka plan rengi */
+        width: 80%;
+        max-width: 600px; /* Yorum kutularının genişliği */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .comment-item {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #DAE1F5; /* Yorum kutularının kenar rengi */
+        border-radius: 4px;
+    }
+    .comment-item p {
+        margin-bottom: 10px;
+        color: #545D7A; /* Yazı rengi */
+    }
+    .comment-item p:first-of-type {
+        font-weight: 700;
+        color: #10182F; /* Kullanıcı adı rengi */
+    }
+</style>
 
-</ul>
+<div class="comments-container">
+    <ul>
+        {% for comment in comments %}
+        <li class="comment-item">
+            <p>{{ comment.nickname }}</p>
+            <p>{{ comment.comment_text }}</p>
+            <p>Rating: {{ comment.rating }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 
-
-<h2>COMMENTPAGE</h2>
-
-{%endblock%}
+{% endblock %}
