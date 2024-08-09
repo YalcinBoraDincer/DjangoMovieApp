@@ -2,6 +2,12 @@
 
 {%block content%}
 <br><br><br><br>
+<ul>
+    {% for comment in comments%}
+    <li>{{comment}}</li>
+    {%endfor%}
+
+</ul>
 
 
 <h2>COMMENTPAGE</h2>
