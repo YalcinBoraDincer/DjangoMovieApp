@@ -46,11 +46,16 @@
     <ul>
         {% for comment in comments %}
         <li class="comment-item">
-            <p>{{ comment.nickname }}</p>
+            <p>{{ comment.user }}</p>
             <p>{{ comment.comment_text }}</p>
             <p>Rating: {{ comment.rating }}</p>
+            {% if comment.user == user %}
+            <a href="{%url 'mywebsite:deletecomment' id=comment.id%}" class= "btn btn-danger">Delete</a>
+            {% endif %}
         </li>
+        
         {% endfor %}
+
     </ul>
 </div>
 

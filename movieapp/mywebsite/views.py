@@ -15,18 +15,26 @@ def commentpage(request):
     comment_dictionary = {"comments": all_comments}  # Sözlük olarak tanımlanmalı
     return render(request, 'mywebsite/commentpage.html', context=comment_dictionary)
 
-@login_required(login_url = "/login")
-
+@login_required(login_url="/login")
 def addcomment(request):
     if request.method == "POST":
-        nickname = request.POST["nickname"]
+        # nickname yerine user instance'ı alıyoruz
+        user = request.user  
         comment = request.POST["comment"]
         rating = request.POST["rating"]
-        #movie = models.Movie.objects.get(id=movie_id)
-        models.Comment.objects.create(nickname = nickname,comment_text=comment, rating=rating)
+        models.Comment.objects.create(user=user, comment_text=comment, rating=rating)
         return redirect(reverse('mywebsite:commentpage'))
     else:
         return render(request, 'mywebsite/addcomment.html')
+
+@login_required
+def deletecomment(request,id):
+    comment = models.Comment.objects.get(pk=id)
+    if request.user == comment.user:
+        models.Comment.objects.filter(id=id).delete()
+        return redirect("mywebsite:commentpage")
+    
+
 
         
     

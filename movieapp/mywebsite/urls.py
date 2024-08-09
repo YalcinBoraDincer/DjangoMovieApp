@@ -10,6 +10,8 @@ urlpatterns = [
     path('intheaters/',views.intheaters,name='intheaters'),#bora.com/mywebsite/intheaters
     path('addcomment/',views.addcomment,name='addcomment'),#bora.com/mywebsite/addcomment
     path('signup/',views.signUpView.as_view(),name="signup"),
+    path('deletecomment/<int:id>',views.deletecomment,name="deletecomment"),
+    
     
     
     
