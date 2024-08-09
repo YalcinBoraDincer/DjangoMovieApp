@@ -5,8 +5,8 @@ from django.urls import reverse
 # Create your views here.
 def commentpage(request):
     all_comments = models.Comment.objects.all()
-    comment_dictionary = {"comments",all_comments}
-    return render(request,'mywebsite/commentpage.html',context=comment_dictionary)
+    comment_dictionary = {"comments": all_comments}  # Sözlük olarak tanımlanmalı
+    return render(request, 'mywebsite/commentpage.html', context=comment_dictionary)
 
 def addcomment(request):
     if request.method == "POST":
