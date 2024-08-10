@@ -60,7 +60,7 @@ h2 {
 
 <div class="movie-container">
     {% for movie in movies %}
-        <a href="{% url 'mywebsite:addcomment'%}" class="movie-card">
+        <a href="{%url 'mywebsite:movieinfo' id=movie.id%}" class="movie-card">
     <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" class="movie-poster">
     <div class="movie-title">
         <p>{{ movie.title }}</p>

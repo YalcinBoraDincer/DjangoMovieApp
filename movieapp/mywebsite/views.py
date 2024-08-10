@@ -1,3 +1,4 @@
+import random
 from django.shortcuts import render,redirect
 from . import models
 from django.urls import reverse,reverse_lazy
@@ -33,20 +34,21 @@ def deletecomment(request,id):
     if request.user == comment.user:
         models.Comment.objects.filter(id=id).delete()
         return redirect("mywebsite:commentpage")
-    
-
-
         
-    
-    
-
-
 def whattowatch(request):
-    return render(request,'mywebsite/whattowatch.html')
+    randomID = random.randint(1,1000)
+    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'  
+    base_url = f'https://api.themoviedb.org/3/movie/{randomID}'
+    params = {
+        'api_key': api_key,
+        'language': 'en-US',
+    }
+    
+    response = requests.get(base_url, params=params)
+    movie = response.json()
+    print(movie)
 
-
-
-
+    return render(request, 'mywebsite/whattowatch.html', {'movie': movie})
 
 def intheaters(request):
     api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'
@@ -66,7 +68,20 @@ def intheaters(request):
 
     return render(request, 'mywebsite\inTheaters.html', {'movies': movies})
     
+def movieinfo(request,id):
+    movie_id = id
+    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'  
+    base_url = f'https://api.themoviedb.org/3/movie/{movie_id}'
+    params = {
+        'api_key': api_key,
+        'language': 'en-US',
+    }
+    
+    response = requests.get(base_url, params=params)
+    movie = response.json()
+    print(movie)
 
+    return render(request, 'mywebsite/movieinfo.html', {'movie': movie})
 
 
 class signUpView(CreateView):

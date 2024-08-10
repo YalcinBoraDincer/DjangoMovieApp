@@ -3,20 +3,28 @@
 {% block content %}
 <br><br><br><br><br><br>
 
-<h2 style="text-align: center; margin-bottom: 20px;">What to Watch</h2>
+<h2 style="text-align: center; margin-bottom: 20px;">Movie Info</h2>
 
-<div style="display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
+<div style="position: relative; display: flex; align-items: flex-start; gap: 20px; padding: 20px;">
     <!-- Poster -->
     <div style="flex-shrink: 0;">
         <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" style="max-width: 300px; border-radius: 10px;">
     </div>
     
     <!-- Film Bilgileri -->
-    <div>
+    <div style="flex-grow: 1; position: relative;">
         <h3>{{ movie.title }}</h3>
         <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
         <p><strong>Rating:</strong> {{ movie.vote_average }} / 10</p>
         <p><strong>Overview:</strong> {{ movie.overview }}</p>
+        <br><br><br><br><br><br><br>
+        
+        <!-- Buton -->
+        <button type="button" class="btn btn-success" 
+            onclick="window.location.href='{% url 'mywebsite:addcomment' %}?movie_id={{ movie.id }}'" 
+            style="position: absolute; bottom: 0; top:40; right: 60px;">
+            Yorum Yap
+        </button>
     </div>
 </div>
 
