@@ -8,6 +8,7 @@ urlpatterns = [
     path('whattowatch/',views.whattowatch,name='whattowatch'),#bora.com/mywebsite/movies
     path('comentpage/',views.commentpage,name='commentpage'),#bora.com/mywebsite/commentpage
     path('intheaters/',views.intheaters,name='intheaters'),#bora.com/mywebsite/intheaters
+    
     path('addcomment/<int:movie_id>/', views.addcomment, name='addcomment'),#bora.com/mywebsite/addcomment
     path('signup/',views.signUpView.as_view(),name="signup"),
     path('deletecomment/<int:id>',views.deletecomment,name="deletecomment"),

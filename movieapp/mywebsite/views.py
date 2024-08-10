@@ -53,7 +53,7 @@ def whattowatch(request):
         }
         response = requests.get(base_url + str(randomID), params=params)
         movie = response.json()
-        # Poster path kontrolü
+        
         if response.status_code == 200 and movie.get('status_code') is None and movie.get('poster_path'):
             return movie
         return None
