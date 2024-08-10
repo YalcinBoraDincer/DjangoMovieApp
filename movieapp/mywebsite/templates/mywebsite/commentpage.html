@@ -23,14 +23,26 @@
         padding: 20px;
         background-color: #FFF; /* Yorum kutularının arka plan rengi */
         width: 80%;
-        max-width: 600px; /* Yorum kutularının genişliği */
+        max-width: 800px; /* Yorum kutularının genişliği */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
     .comment-item {
+        display: flex;
+        align-items: flex-start;
         margin-bottom: 20px;
         padding: 15px;
         border: 1px solid #DAE1F5; /* Yorum kutularının kenar rengi */
         border-radius: 4px;
+    }
+    .comment-item img {
+        border-radius: 50%; /* Resmi yuvarlak yapar */
+        margin-right: 15px;
+        width: 65px;
+        height: 65px; /* Resim boyutu */
+        object-fit: cover; /* Resmin yuvarlak içinde düzgün görünmesini sağlar */
+    }
+    .comment-item .text-content {
+        flex: 1;
     }
     .comment-item p {
         margin-bottom: 10px;
@@ -40,22 +52,33 @@
         font-weight: 700;
         color: #10182F; /* Kullanıcı adı rengi */
     }
+    .btn-delete {
+        margin-top: 10px;
+        color: #fff;
+        background-color: #dc3545;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-size: 14px;
+    }
 </style>
 
 <div class="comments-container">
     <ul>
         {% for comment in comments %}
         <li class="comment-item">
-            <p>{{ comment.user }}</p>
-            <p>{{ comment.comment_text }}</p>
-            <p>Rating: {{ comment.rating }}</p>
-            {% if comment.user == user %}
-            <a href="{%url 'mywebsite:deletecomment' id=comment.id%}" class= "btn btn-danger">Delete</a>
-            {% endif %}
+            <img src="https://api.multiavatar.com/{{ comment.id }}.png" alt="Avatar">
+            <div class="text-content">
+                <p>{{ comment.user }} / {{comment.movie_id}}</p>
+                <p>{{ comment.comment_text }}</p>
+                <p>Rating: {{ comment.rating }}</p>
+                {% if comment.user == user %}
+                <a href="{% url 'mywebsite:deletecomment' comment.id %}" class="btn-delete">Delete</a>
+                {% endif %}
+            </div>
         </li>
-        
         {% endfor %}
-
     </ul>
 </div>
 

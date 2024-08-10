@@ -12,16 +12,12 @@
                         <div class="card-body p-4">
                             <div class="d-flex flex-start w-100">
                                 <img class="rounded-circle shadow-1-strong me-3"
-                                    src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(21).webp" alt="avatar" width="65"
+                                    src="https://api.multiavatar.com/{{ movie_id }}.png" alt="Avatar" width="65"
                                     height="65" />
                                 <div class="w-100">
-                                    <!--
-                                    <h5>Enter Nickname</h5>
-                                    <div class="form-outline">
-                                        <label class="form-label" for="comment_text">What is your nick ?</label>
-                                        <textarea class="form-control" id="nickname" name="nickname" rows="4" style="border-color: black;"></textarea>
-                                    </div> -->
-                                    <br>
+                                    <!-- Gizli alan ekleyin -->
+                                    <input type="hidden" name="movie_id" value="{{ movie_id }}">
+                                    
                                     <h5>Add a comment</h5>
                                     <div class="form-outline">
                                         <label class="form-label" for="comment_text">What is your view?</label>
