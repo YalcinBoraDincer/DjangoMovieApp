@@ -42,7 +42,7 @@ def deletecomment(request,id):
         return redirect("mywebsite:commentpage")
         
 def whattowatch(request):
-    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'
+    api_key = 'YOUR_API_KEY'
     base_url = 'https://api.themoviedb.org/3/movie/'
 
     def get_random_movie():
@@ -65,7 +65,7 @@ def whattowatch(request):
     return render(request, 'mywebsite/whattowatch.html', {'movie': movie})
 
 def intheaters(request):
-    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'
+    api_key = 'YOUR_API_KEY'
     base_url = 'https://api.themoviedb.org/3/movie/upcoming'
     params = {
         'api_key': api_key,
@@ -85,7 +85,7 @@ def intheaters(request):
 
 def movieinfo(request,id):
     movie_id = id
-    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'  
+    api_key = 'YOUR_API_KEY'  
     base_url = f'https://api.themoviedb.org/3/movie/{movie_id}'
     params = {
         'api_key': api_key,
@@ -106,7 +106,7 @@ class signUpView(CreateView):
     template_name = "registration/signup.html"
     
 def imdb_top_100(request):
-    api_key = 'dc2cb6eba9dc7aa882ffe77d243ec2e3'
+    api_key = 'YOUR_API_KEY'
     base_url = 'https://api.themoviedb.org/3/movie/top_rated'
     params = {
         'api_key': api_key,
